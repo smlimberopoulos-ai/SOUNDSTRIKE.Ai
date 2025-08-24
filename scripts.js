@@ -1,24 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const sounds = {
-    title: new Audio("assets/ui-title.wav"),
-    logo: new Audio("assets/ui-logo.wav"),
-    studio: new Audio("assets/ui-click.wav"),
-    datasets: new Audio("assets/ui-hover.wav"),
-    name: new Audio("assets/ui-name.wav"),
-    role: new Audio("assets/ui-role.wav")
-  };
-
-  const playSound = (id, sound) => {
-    document.getElementById(id).addEventListener("mouseenter", () => {
-      sounds[sound].currentTime = 0;
-      sounds[sound].play();
-    });
-  };
-
-  playSound("title", "title");
-  playSound("logo", "logo");
-  playSound("studio", "studio");
-  playSound("datasets", "datasets");
-  playSound("name", "name");
-  playSound("role", "role");
+document.querySelectorAll('.hover-sfx').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    const sfxName = el.getAttribute('data-sfx');
+    const audio = new Audio(`assets/${sfxName}.wav`);
+    audio.play();
+    el.classList.add('active');
+    setTimeout(() => el.classList.remove('active'), 500);
+  });
 });

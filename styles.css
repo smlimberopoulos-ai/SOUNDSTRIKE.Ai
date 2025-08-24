@@ -1,61 +1,83 @@
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
-  background: black;
-  color: #00eaff;
+  background: #000;
+  color: #00f0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.background {
+  background: url('assets/noise.png'), url('assets/circuit-board.svg');
+  background-size: cover;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  animation: pulse 6s infinite alternate;
+}
+@keyframes pulse {
+  0% { filter: hue-rotate(0deg) brightness(0.9); }
+  100% { filter: hue-rotate(45deg) brightness(1.2); }
+}
+.ui {
   text-align: center;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+.logo {
+  width: 120px;
+  margin: 0 auto 20px;
+  display: block;
 }
-
-header .logo {
-  width: 100px;
-  margin-bottom: 10px;
-}
-
-h1 {
+.title {
   font-size: 3em;
-  text-shadow: 0 0 20px #00eaff;
+  text-shadow: 0 0 20px #00f0ff;
+  margin-bottom: 30px;
 }
-
-.button {
-  border: 2px solid #00eaff;
+.buttons {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.btn {
+  border: 2px solid #00f0ff;
   padding: 20px;
-  margin: 20px;
+  border-radius: 12px;
   width: 250px;
   transition: all 0.3s ease;
   cursor: pointer;
 }
-
-.button:hover {
-  background-color: rgba(0, 234, 255, 0.1);
-  box-shadow: 0 0 20px #00eaff;
+.btn:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 20px #00f0ff;
 }
-
-button {
-  margin-top: 10px;
-  padding: 10px 20px;
+.btn h2 {
+  margin: 0;
+  font-size: 1.3em;
+}
+.btn p {
+  font-size: 0.9em;
+  margin: 10px 0;
+}
+.btn button {
+  background: #00f0ff;
   border: none;
-  background: #00eaff;
-  color: black;
-  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  color: #000;
+  font-weight: bold;
 }
-
-button:hover {
-  background: #ff003c;
-  color: white;
+.btn button:hover {
+  background: #ff004c;
+  color: #fff;
 }
-
-footer {
-  margin-top: 40px;
-  font-size: 1.2em;
-  text-shadow: 0 0 10px #00eaff;
+.footer {
+  font-size: 1em;
+  color: #00f0ff;
+}
+.footer p {
+  margin: 5px;
+  text-shadow: 0 0 10px #00f0ff;
 }

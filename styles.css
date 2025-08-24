@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: black;
+  color: #00eaff;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+header .logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 3em;
+  text-shadow: 0 0 20px #00eaff;
+}
+
+.button {
+  border: 2px solid #00eaff;
+  padding: 20px;
+  margin: 20px;
+  width: 250px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: rgba(0, 234, 255, 0.1);
+  box-shadow: 0 0 20px #00eaff;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #00eaff;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #ff003c;
+  color: white;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 1.2em;
+  text-shadow: 0 0 10px #00eaff;
+}

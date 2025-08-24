@@ -1,43 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soundstrike — Stephen Limberopoulos</title>
-<meta name="description" content="Soundstrike — cyberpunk audio studio & AI voice datasets. Working engineers for working models.">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="preload" href="assets/hero-bg.png" as="image">
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>SOUNDSTRIKE — Neon UI Start Screen</title>
+<link rel="icon" href="assets/noise.png" />
+<link rel="preload" as="audio" href="assets/ui-hover.wav">
+<link rel="preload" as="audio" href="assets/ui-click.wav">
+<link rel="preload" as="audio" href="assets/ui-logo.wav">
+<link rel="preload" as="audio" href="assets/ui-title.wav">
+<link rel="preload" as="audio" href="assets/ui-role.wav">
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div class="backdrop" aria-hidden="true"></div>
-<div class="wrap">
-  <div class="logo" title="Soundstrike logo"></div>
-  <h1>SOUNDSTRIKE</h1>
+  <div id="bg">
+    <img class="layer board" src="assets/circuit-board.svg" alt=""/>
+    <img class="layer noise" src="assets/noise.png" alt=""/>
+    <canvas id="digits"></canvas>
+  </div>
 
-  <section class="grid">
-    <div class="card">
-      <h2>SOUNDSTRIKE STUDIO</h2>
-      <p>Be a part of our latest audio project.</p>
-      <button class="btn studio" onclick="location.href='#studio'">VIEW PROJECTS</button>
-    </div>
-    <div class="card">
-      <h2>VOICE DATASETS</h2>
-      <p>High‑quality speech data for AI.</p>
-      <button class="btn datasets" onclick="location.href='#datasets'">LEARN MORE</button>
-    </div>
-  </section>
+  <main class="wrap">
+    <header class="brand" data-sfx="title">
+      <img src="assets/logo-mark.svg" class="logo" alt="Soundstrike logo" data-sfx="logo"/>
+      <h1 class="title" data-sfx="title">SOUNDSTRIKE</h1>
+    </header>
 
-  <footer class="footer">
-    <div class="name">STEPHEN LIMBEROPOULOS</div>
-    <div class="role">Audio Engineer</div>
-  </footer>
-</div>
+    <section class="panels">
+      <a class="panel cyan" href="#" data-sfx="hover">
+        <h2>SOUNDSTRIKE<br/>STUDIO</h2>
+        <p>Become a part of our latest audio project</p>
+        <button class="btn" data-sfx="click">START</button>
+      </a>
 
-<div class="tagline" title="Our motto">
-  Working Engineers for Working Models
-</div>
+      <a class="panel magenta" href="#" data-sfx="hover">
+        <h2>VOICE DATASET</h2>
+        <p>High-quality speech data for AI</p>
+        <button class="btn" data-sfx="click">START</button>
+      </a>
+    </section>
 
-<script src="scripts.js"></script>
+    <footer class="credit">
+      <button class="name" data-sfx="role">STEPHEN LIMBEROPOULOS</button>
+      <div class="role">Audio Engineer</div>
+    </footer>
+  </main>
+
+  <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
-# SOUNDSTRIKE — ready-to-drop
-- Drag this folder into your repo root and commit + push.
-- Pages serves `index.html` from **main**.
-- Swap `assets/hero-bg.png` to change the background art.
-- Five UI sounds are already wired (hover/click on six hotspots).
+# SOUNDSTRIKE UI
+Flat package ready for GitHub Pages.
 
-Hotspots: Logo, Title, Studio button, Datasets button, Name, Role.
+- Replace repo contents with these files.
+- Five SFX on hover/click.
+- Artwork in `assets/`.

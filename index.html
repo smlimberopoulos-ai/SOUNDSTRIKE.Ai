@@ -1,35 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soundstrike</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="scripts.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soundstrike — Stephen Limberopoulos</title>
+<meta name="description" content="Soundstrike — cyberpunk audio studio & AI voice datasets. Working engineers for working models.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preload" href="assets/hero-bg.png" as="image">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="background"></div>
-  <div class="ui">
-    <img src="assets/logo-mark.svg" alt="Soundstrike Logo" class="logo hover-sfx" data-sfx="ui-logo" />
-    <h1 class="title hover-sfx" data-sfx="ui-title">SOUNDSTRIKE</h1>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="logo" title="Soundstrike logo"></div>
+  <h1>SOUNDSTRIKE</h1>
 
-    <div class="buttons">
-      <div class="btn hover-sfx" data-sfx="ui-portfolio">
-        <h2>PORTFOLIO</h2>
-        <p>Listen to our latest audio projects</p>
-        <button>VIEW PROJECTS</button>
-      </div>
-      <div class="btn hover-sfx" data-sfx="ui-datasets">
-        <h2>VOICE DATASETS</h2>
-        <p>High-quality speech data for AI</p>
-        <button>LEARN MORE</button>
-      </div>
+  <section class="grid">
+    <div class="card">
+      <h2>SOUNDSTRIKE STUDIO</h2>
+      <p>Be a part of our latest audio project.</p>
+      <button class="btn studio" onclick="location.href='#studio'">VIEW PROJECTS</button>
     </div>
+    <div class="card">
+      <h2>VOICE DATASETS</h2>
+      <p>High‑quality speech data for AI.</p>
+      <button class="btn datasets" onclick="location.href='#datasets'">LEARN MORE</button>
+    </div>
+  </section>
 
-    <div class="footer">
-      <p class="hover-sfx" data-sfx="ui-name">STEPHEN LIMBEROPOULOS</p>
-      <p class="hover-sfx" data-sfx="ui-role">Audio Engineer</p>
-    </div>
-  </div>
+  <footer class="footer">
+    <div class="name">STEPHEN LIMBEROPOULOS</div>
+    <div class="role">Audio Engineer</div>
+  </footer>
+</div>
+
+<div class="tagline" title="Our motto">
+  Working Engineers for Working Models
+</div>
+
+<script src="scripts.js"></script>
 </body>
 </html>

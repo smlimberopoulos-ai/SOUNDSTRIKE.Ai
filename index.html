@@ -21,7 +21,7 @@ body{
     var(--bg);
 }
 
-/* CRT veneer */
+/* subtle CRT/flicker */
 .scan{position:fixed;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
   background:repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px)}
 .flicker{position:fixed;inset:0;pointer-events:none;background:radial-gradient(90% 70% at 50% 0%, rgba(33,243,255,.08), transparent 60%);
@@ -33,7 +33,7 @@ body{
 
 /* INLINE SVG LOGO (no images) */
 .logo-mark{
-  width:74px;height:74px;color:var(--neon-cyan);
+  width:74px;height:74px;color:var(--neon-cyan);display:block;
   filter:
     drop-shadow(0 0 10px rgba(33,243,255,.95))
     drop-shadow(0 0 26px rgba(33,243,255,.65))
@@ -70,7 +70,7 @@ body{
 .btn:hover::before{opacity:.95}
 .btn.cyan{color:var(--neon-cyan)} .btn.mag{color:var(--neon-mag)} .btn.orng{color:var(--neon-orange)}
 
-/* Glitch overlay */
+/* Glitch text */
 .glitch{position:relative;display:inline-block}
 .glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;opacity:.75}
 .glitch::before{transform:translate(-1px,0);color:var(--neon-cyan);text-shadow:0 0 10px var(--neon-cyan)}
@@ -94,7 +94,7 @@ body{
 <main class="wrap">
   <header class="brand">
     <!-- Inline SVG logo (no PNGs) -->
-    <svg class="logo-mark" viewBox="0 0 240 240" aria-label="Soundstrike logo" xmlns="http://www.w3.org/2000/svg" role="img">
+    <svg class="logo-mark" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Soundstrike logo">
       <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
         <!-- radio waves -->
         <path d="M38 122 a74 74 0 0 1 0-104" />

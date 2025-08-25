@@ -63,10 +63,46 @@ body{
 </head>
 <body>
 <div class="scan"></div><div class="flicker"></div>
-<main class="wrap">
-  <header class="brand">
-  <img src="logo.png" alt="Soundstrike logo" class="logo" />
-  <h1 class="title glitch" data-text="SOUNDSTRIKE">SOUNDSTRIKE</h1>
+<header class="brand">
+  <!-- Inline SVG: Soundstrike mark -->
+  <svg class="logo-mark" viewBox="0 0 240 240" aria-label="Soundstrike logo"
+       xmlns="http://www.w3.org/2000/svg" role="img">
+    <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+      <!-- radio waves -->
+      <path d="M38 122 a74 74 0 0 1 0-104" />
+      <path d="M60 122 a52 52 0 0 1 0-73" />
+      <path d="M81 122 a33 33 0 0 1 0-46" />
+
+      <!-- head outline -->
+      <path d="M104 179 c-8 -10 -5 -18 -10 -26
+               c-6 -10 6 -13 6 -18
+               c0 -6 -10 -18 -10 -23
+               c0 -5 9 -12 10 -18
+               c2 -16 8 -29 14 -38
+               c9 -14 33 -25 57 -25
+               c17 0 34 5 46 12" />
+
+      <!-- neck + jaw -->
+      <path d="M118 197 c13 -2 26 -6 35 -14" />
+      <path d="M172 203 c-8 -16 -12 -33 -12 -51" />
+
+      <!-- brain -->
+      <path d="M132 122 c-12 -2 -22 -11 -22 -22
+               c0 -12 12 -22 26 -22
+               c8 0 14 4 18 9" />
+      <path d="M160 120 c10 -2 18 -10 18 -19
+               c0 -10 -10 -18 -22 -18
+               c-6 0 -11 2 -15 5" />
+      <path d="M141 140 c8 3 21 1 28 -6" />
+
+      <!-- burst spikes -->
+      <g transform="translate(192,102)">
+        <path d="M0 0 L22 -34" />
+        <path d="M0 0 L36 -16" />
+        <path d="M0 0 L40 6" />
+        <path d="M0 0 L36 26" />
+        <path d="M0 0 L22 42" />
+
 
   </header>
   <section class="grid">

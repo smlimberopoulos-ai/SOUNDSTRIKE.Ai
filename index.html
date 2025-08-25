@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SOUNDSTRIKE — Stephen Limberopoulos</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-
+<style>
 :root{
   --bg:#05060a; --fg:#d8d8e8;
   --neon-cyan:#21f3ff; --neon-mag:#ff3df7; --neon-orange:#ff9a1a;
@@ -18,93 +18,120 @@ body{
   background:
     radial-gradient(1200px 600px at 70% -10%, rgba(255,61,247,.09), transparent 60%),
     radial-gradient(800px 400px at 10% 110%, rgba(33,243,255,.08), transparent 60%),
-    #05060a;
+    var(--bg);
 }
+
+/* CRT veneer */
 .scan{position:fixed;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
-  background:repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px);}
+  background:repeating-linear-gradient(180deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px)}
 .flicker{position:fixed;inset:0;pointer-events:none;background:radial-gradient(90% 70% at 50% 0%, rgba(33,243,255,.08), transparent 60%);
   animation:flick 6s ease-in-out infinite;opacity:.25;mix-blend-mode:overlay}
 @keyframes flick{0%,100%{opacity:.2}50%{opacity:.32}}
+
 .wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:2rem;padding:2.25rem}
-.brand{display:flex;align-items:center;gap:1.0rem;justify-content:center;margin-top:.5rem}
-.logo{height:64px;filter:drop-shadow(0 0 6px rgba(33,243,255,.6)) drop-shadow(0 0 18px rgba(33,243,255,.25))}
-.title {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 900;
-  letter-spacing: .02em;
-  font-size: clamp(2.2rem,7vw,4.5rem);
-  color: var(--neon-cyan);
-  text-shadow: 0 0 14px rgba(33,243,255,.65), 0 0 36px rgba(33,243,255,.25);
+.brand{display:flex;align-items:center;gap:.9rem;justify-content:center;margin-top:.5rem}
+
+/* INLINE SVG LOGO (no images) */
+.logo-mark{
+  width:74px;height:74px;color:var(--neon-cyan);
+  filter:
+    drop-shadow(0 0 10px rgba(33,243,255,.95))
+    drop-shadow(0 0 26px rgba(33,243,255,.65))
+    drop-shadow(0 0 52px rgba(33,243,255,.45));
+  animation:logoPulse 3.6s ease-in-out infinite;
+}
+@keyframes logoPulse{
+  0%,100%{ filter:
+    drop-shadow(0 0 10px rgba(33,243,255,.9))
+    drop-shadow(0 0 26px rgba(33,243,255,.6))
+    drop-shadow(0 0 52px rgba(33,243,255,.4)); }
+  50%{ filter:
+    drop-shadow(0 0 14px rgba(33,243,255,1))
+    drop-shadow(0 0 34px rgba(33,243,255,.8))
+    drop-shadow(0 0 70px rgba(33,243,255,.55)); }
 }
 
+.title{
+  font-family:'Orbitron',sans-serif;font-weight:900;letter-spacing:.02em;
+  font-size:clamp(2.2rem,7vw,4.5rem);color:var(--neon-cyan);
+  text-shadow:0 0 14px rgba(33,243,255,.65), 0 0 36px rgba(33,243,255,.25);
+}
+
+/* Buttons */
 .grid{display:grid;grid-template-columns:1fr;gap:1.05rem;width:min(780px,92vw)}
-.btn{position:relative;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-weight:900;letter-spacing:.08em;
-  border:2px solid currentColor;border-radius:18px;padding:1.3rem 1.25rem;text-transform:uppercase;overflow:hidden;isolation:isolate;
-  transition:transform .08s ease, box-shadow .12s linear, filter .18s ease}
+.btn{position:relative;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;
+  font-weight:900;letter-spacing:.08em;border:2px solid currentColor;border-radius:18px;padding:1.3rem 1.25rem;
+  text-transform:uppercase;overflow:hidden;isolation:isolate;transition:transform .08s ease,box-shadow .12s linear,filter .18s ease}
 .btn span{position:relative;z-index:2;font-size:clamp(1.1rem,2.8vw,1.6rem)}
 .btn::before{content:"";position:absolute;inset:-2px;border-radius:inherit;box-shadow:0 0 18px 2px currentColor,0 0 48px 6px currentColor;opacity:.55;transition:opacity .15s}
-.btn::after{content:"";position:absolute;inset:-2px;border-radius:inherit;opacity:.06;mix-blend-mode:overlay;background:repeating-linear-gradient(0deg, rgba(255,255,255,.14) 0 2px, transparent 2px 4px)}
+.btn::after{content:"";position:absolute;inset:-2px;border-radius:inherit;opacity:.06;mix-blend-mode:overlay;
+  background:repeating-linear-gradient(0deg, rgba(255,255,255,.14) 0 2px, transparent 2px 4px)}
 .btn:hover{transform:translateY(-1px) scale(1.01);box-shadow:0 0 24px 4px currentColor,inset 0 0 16px rgba(255,255,255,.08);filter:contrast(1.06) saturate(1.08)}
 .btn:hover::before{opacity:.95}
-.btn.cyan{color:var(--neon-cyan)}.btn.mag{color:var(--neon-mag)}.btn.orng{color:var(--neon-orange)}
+.btn.cyan{color:var(--neon-cyan)} .btn.mag{color:var(--neon-mag)} .btn.orng{color:var(--neon-orange)}
+
+/* Glitch overlay */
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;opacity:.75}
+.glitch::before{transform:translate(-1px,0);color:var(--neon-cyan);text-shadow:0 0 10px var(--neon-cyan)}
+.glitch::after{transform:translate(1px,0);color:var(--neon-mag);text-shadow:0 0 10px var(--neon-mag)}
+@keyframes glitchy{0%{clip-path:inset(0 0 92% 0)}20%{clip-path:inset(40% 0 30% 0)}40%{clip-path:inset(60% 0 20% 0)}60%{clip-path:inset(75% 0 0 0)}80%{clip-path:inset(45% 0 40% 0)}100%{clip-path:inset(0 0 0 0)}}
+.btn:hover .glitch{animation:glitchy .45s steps(12,end) 1}
+.title.glitch:hover{animation:glitchy .6s steps(14,end) 1}
+
+/* Signature */
 .sig{display:flex;align-items:center;justify-content:center;width:100%;padding:1.1rem 0 .6rem}
 .nameplate{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.25rem;border-radius:16px;border:2px solid var(--neon-mag);color:var(--neon-mag);
   box-shadow:0 0 18px 2px var(--neon-mag),0 0 48px 6px rgba(255,61,247,.35)}
 .role{font-weight:800;letter-spacing:.12em;color:var(--neon-cyan);font-size:.98rem}
-.glitch{position:relative;display:inline-block}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;opacity:.75}
-.glitch::before{transform:translate(-1px,0);color:var(--neon-cyan);text-shadow:0 0 10px var(--neon-cyan)}
-.glitch::after{transform:translate( 1px,0);color:var(--neon-mag);text-shadow:0 0 10px var(--neon-mag)}
-@keyframes glitchy{0%{clip-path:inset(0 0 92% 0)}20%{clip-path:inset(40% 0 30% 0)}40%{clip-path:inset(60% 0 20% 0)}60%{clip-path:inset(75% 0 0 0)}80%{clip-path:inset(45% 0 40% 0)}100%{clip-path:inset(0 0 0 0)}}
-.btn:hover .glitch{animation:glitchy .45s steps(12,end) 1}
-.title.glitch:hover{animation:glitchy .6s steps(14,end) 1}
-@media(max-width:640px){.logo{height:54px}}
+
+@media (max-width:640px){ .logo-mark{width:56px;height:56px} }
 </style>
 </head>
 <body>
 <div class="scan"></div><div class="flicker"></div>
-<header class="brand">
-  <!-- Inline SVG: Soundstrike mark -->
-  <svg class="logo-mark" viewBox="0 0 240 240" aria-label="Soundstrike logo"
-       xmlns="http://www.w3.org/2000/svg" role="img">
-    <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-      <!-- radio waves -->
-      <path d="M38 122 a74 74 0 0 1 0-104" />
-      <path d="M60 122 a52 52 0 0 1 0-73" />
-      <path d="M81 122 a33 33 0 0 1 0-46" />
 
-      <!-- head outline -->
-      <path d="M104 179 c-8 -10 -5 -18 -10 -26
-               c-6 -10 6 -13 6 -18
-               c0 -6 -10 -18 -10 -23
-               c0 -5 9 -12 10 -18
-               c2 -16 8 -29 14 -38
-               c9 -14 33 -25 57 -25
-               c17 0 34 5 46 12" />
+<main class="wrap">
+  <header class="brand">
+    <!-- Inline SVG logo (no PNGs) -->
+    <svg class="logo-mark" viewBox="0 0 240 240" aria-label="Soundstrike logo" xmlns="http://www.w3.org/2000/svg" role="img">
+      <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+        <!-- radio waves -->
+        <path d="M38 122 a74 74 0 0 1 0-104" />
+        <path d="M60 122 a52 52 0 0 1 0-73" />
+        <path d="M81 122 a33 33 0 0 1 0-46" />
+        <!-- head outline -->
+        <path d="M104 179 c-8 -10 -5 -18 -10 -26
+                 c-6 -10 6 -13 6 -18
+                 c0 -6 -10 -18 -10 -23
+                 c0 -5 9 -12 10 -18
+                 c2 -16 8 -29 14 -38
+                 c9 -14 33 -25 57 -25
+                 c17 0 34 5 46 12" />
+        <!-- jaw + neck -->
+        <path d="M118 197 c13 -2 26 -6 35 -14" />
+        <path d="M172 203 c-8 -16 -12 -33 -12 -51" />
+        <!-- brain curls -->
+        <path d="M132 122 c-12 -2 -22 -11 -22 -22 c0 -12 12 -22 26 -22 c8 0 14 4 18 9" />
+        <path d="M160 120 c10 -2 18 -10 18 -19 c0 -10 -10 -18 -22 -18 c-6 0 -11 2 -15 5" />
+        <path d="M141 140 c8 3 21 1 28 -6" />
+        <!-- burst spikes -->
+        <g transform="translate(192,102)">
+          <path d="M0 0 L22 -34" />
+          <path d="M0 0 L36 -16" />
+          <path d="M0 0 L40 6" />
+          <path d="M0 0 L36 26" />
+          <path d="M0 0 L22 42" />
+          <path d="M0 0 L-4 45" />
+          <path d="M0 0 L-22 40" />
+          <path d="M0 0 L-36 26" />
+        </g>
+      </g>
+    </svg>
 
-      <!-- neck + jaw -->
-      <path d="M118 197 c13 -2 26 -6 35 -14" />
-      <path d="M172 203 c-8 -16 -12 -33 -12 -51" />
-
-      <!-- brain -->
-      <path d="M132 122 c-12 -2 -22 -11 -22 -22
-               c0 -12 12 -22 26 -22
-               c8 0 14 4 18 9" />
-      <path d="M160 120 c10 -2 18 -10 18 -19
-               c0 -10 -10 -18 -22 -18
-               c-6 0 -11 2 -15 5" />
-      <path d="M141 140 c8 3 21 1 28 -6" />
-
-      <!-- burst spikes -->
-      <g transform="translate(192,102)">
-        <path d="M0 0 L22 -34" />
-        <path d="M0 0 L36 -16" />
-        <path d="M0 0 L40 6" />
-        <path d="M0 0 L36 26" />
-        <path d="M0 0 L22 42" />
-
-
+    <h1 class="title glitch" data-text="SOUNDSTRIKE">SOUNDSTRIKE</h1>
   </header>
+
   <section class="grid">
     <a href="#studio" class="btn cyan" data-tone="432"><span class="glitch" data-text="SOUNDSTRIKE STUDIO">SOUNDSTRIKE STUDIO</span></a>
     <a href="#beats" class="btn mag" data-tone="516"><span class="glitch" data-text="BEATS">BEATS</span></a>
@@ -112,6 +139,7 @@ body{
     <a href="#portfolio" class="btn cyan" data-tone="712"><span class="glitch" data-text="PORTFOLIO">PORTFOLIO</span></a>
     <a href="#contact" class="btn mag" data-tone="888"><span class="glitch" data-text="CONTACT">CONTACT</span></a>
   </section>
+
   <footer class="sig">
     <div class="nameplate btn mag" data-tone="660" style="cursor:default">
       <span class="glitch" data-text="STEPHEN LIMBEROPOULOS">STEPHEN LIMBEROPOULOS</span>
@@ -119,15 +147,30 @@ body{
     </div>
   </footer>
 </main>
+
 <script>
-const ctx=new (window.AudioContext||window.webkitAudioContext)();let unlocked=false;
-const unlock=()=>{ctx.resume();unlocked=true;window.removeEventListener('pointerdown',unlock)};window.addEventListener('pointerdown',unlock);
-function blip(freq=440,ms=170){if(!unlocked)return;const o=ctx.createOscillator(),g=ctx.createGain();o.type='square';
-o.frequency.setValueAtTime(freq,ctx.currentTime);o.frequency.linearRampToValueAtTime(freq*1.08,ctx.currentTime+ms/3000);
-o.frequency.linearRampToValueAtTime(freq*0.92,ctx.currentTime+ms/1500);g.gain.setValueAtTime(0.001,ctx.currentTime);
-g.gain.exponentialRampToValueAtTime(0.6,ctx.currentTime+0.01);g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+ms/1000);
-o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+ms/1000);}}
-document.querySelectorAll('.btn').forEach(el=>{el.addEventListener('mouseenter',()=>blip(parseFloat(el.dataset.tone||480),170));});
+/* WebAudio hover FX (no external files) */
+const ctx=new (window.AudioContext||window.webkitAudioContext)();
+let unlocked=false;
+const unlock=()=>{ctx.resume();unlocked=true;window.removeEventListener('pointerdown',unlock)};
+window.addEventListener('pointerdown',unlock);
+
+function blip(freq=440,ms=170){
+  if(!unlocked) return;
+  const o=ctx.createOscillator(), g=ctx.createGain();
+  o.type='square';
+  o.frequency.setValueAtTime(freq,ctx.currentTime);
+  o.frequency.linearRampToValueAtTime(freq*1.08,ctx.currentTime+ms/3000);
+  o.frequency.linearRampToValueAtTime(freq*0.92,ctx.currentTime+ms/1500);
+  g.gain.setValueAtTime(0.001,ctx.currentTime);
+  g.gain.exponentialRampToValueAtTime(0.6,ctx.currentTime+0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001,ctx.currentTime+ms/1000);
+  o.connect(g); g.connect(ctx.destination);
+  o.start(); o.stop(ctx.currentTime+ms/1000);
+}
+document.querySelectorAll('.btn').forEach(el=>{
+  el.addEventListener('mouseenter',()=>blip(parseFloat(el.dataset.tone||480),170));
+});
 </script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SOUNDSTRIKE — Stephen Limberopoulos</title>
-<meta name="description" content="Soundstrike Studio — Audio engineering, beats, voice datasets, portfolio. Cyber‑industrial neon UI with glitch and hover audio.">
+<meta name="description" content="Soundstrike Studio — Audio engineering, beats, voice datasets, portfolio. Cyber-industrial neon UI with glitch and hover audio.">
 <style>
 :root{
   --bg:#05060a; --fg:#d8d8e8;
@@ -32,7 +32,7 @@ body{
 
 /* Header */
 .brand{display:flex;align-items:center;gap:1.0rem;justify-content:center;margin-top:.5rem}
-.logo{height:64px;filter:drop-shadow(0 0 6px rgba(33,243,255,.65)) drop-shadow(0 0 18px rgba(33,243,255,.25))}
+.logo{height:64px;filter:drop-shadow(0 0 6px rgba(33,243,255,.6)) drop-shadow(0 0 18px rgba(33,243,255,.25))}
 .title{font-weight:900;letter-spacing:.02em;
   font-size:clamp(2.2rem,7vw,4.5rem);
   color:var(--neon-cyan);
@@ -49,7 +49,6 @@ body{
   transition:transform .08s ease, box-shadow .12s linear, filter .18s ease;
 }
 .btn span{position:relative;z-index:2;font-size:clamp(1.1rem,2.8vw,1.6rem)}
-/* neon frames & scanlines */
 .btn::before{content:"";position:absolute;inset:-2px;border-radius:inherit;
   box-shadow:0 0 18px 2px currentColor,0 0 48px 6px currentColor;opacity:.55;transition:opacity .15s}
 .btn::after{content:"";position:absolute;inset:-2px;border-radius:inherit;opacity:.06;mix-blend-mode:overlay;
@@ -64,87 +63,4 @@ body{
 
 /* Footer name/title */
 .sig{display:flex;align-items:center;justify-content:center;width:100%;padding:1.1rem 0 .6rem}
-.nameplate{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.25rem;border-radius:16px;border:2px solid var(--neon-mag);color:var(--neon-mag);
-  box-shadow:0 0 18px 2px var(--neon-mag),0 0 48px 6px rgba(255,61,247,.35)}
-.role{font-weight:800;letter-spacing:.12em;color:var(--neon-cyan);font-size:.98rem}
-
-/* Glitch */
-.glitch{position:relative;display:inline-block}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;mix-blend-mode:screen;opacity:.75}
-.glitch::before{transform:translate(-1px,0);color:var(--neon-cyan);text-shadow:0 0 10px var(--neon-cyan)}
-.glitch::after {transform:translate( 1px,0);color:var(--neon-mag );text-shadow:0 0 10px var(--neon-mag )}
-@keyframes glitchy{
-  0%{clip-path:inset(0 0 92% 0)} 10%{clip-path:inset(10% 0 70% 0)}
-  20%{clip-path:inset(40% 0 30% 0)} 40%{clip-path:inset(60% 0 20% 0)}
-  60%{clip-path:inset(75% 0  0 0)} 80%{clip-path:inset(45% 0 40% 0)}
- 100%{clip-path:inset(0 0 0 0)}
-}
-.btn:hover .glitch{animation:glitchy .45s steps(12,end) 1}
-.title.glitch:hover{animation:glitchy .6s steps(14,end) 1}
-
-/* Mobile */
-@media (max-width:640px){
-  .logo{height:54px}
-}
-</style>
-</head>
-<body>
-<div class="scan"></div><div class="flicker"></div>
-
-<main class="wrap">
-  <!-- Header: logo + SOUNDSTRIKE -->
-  <header class="brand">
-    <!-- Inline SVG logo (clean, monochrome, with cyan glow) -->
-    <svg class="logo" viewBox="0 0 200 200" aria-hidden="true">
-      <g fill="none" stroke="#21f3ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 70a40 40 0 0 1 0 60M35 60a55 55 0 0 1 0 80M50 50a70 70 0 0 1 0 100"/>
-        <path d="M78 150c-12-28-12-72 0-100 24-10 58 0 74 26l20-10-12 22 20 8-22 6c-6 16-22 32-42 40-14 6-26 8-38 8z"/>
-        <path d="M102 72c8-8 22-8 28 2-6 0-10 2-12 6 6 0 10 2 12 6-8 8-22 8-28-2 6 0 10-2 12-6-6 0-10-2-12-6z"/>
-      </g>
-    </svg>
-    <h1 class="title glitch" data-text="SOUNDSTRIKE">SOUNDSTRIKE</h1>
-  </header>
-
-  <!-- Menu buttons -->
-  <section class="grid">
-    <a href="#studio" class="btn cyan"  data-tone="432"><span class="glitch" data-text="SOUNDSTRIKE STUDIO">SOUNDSTRIKE STUDIO</span></a>
-    <a href="#beats"  class="btn mag"   data-tone="516"><span class="glitch" data-text="BEATS">BEATS</span></a>
-    <a href="#voice"  class="btn orng"  data-tone="604"><span class="glitch" data-text="VOICE">VOICE</span></a>
-    <a href="#portfolio" class="btn cyan" data-tone="712"><span class="glitch" data-text="PORTFOLIO">PORTFOLIO</span></a>
-    <a href="#contact" class="btn mag"   data-tone="888"><span class="glitch" data-text="CONTACT">CONTACT</span></a>
-  </section>
-
-  <!-- Signature -->
-  <footer class="sig">
-    <div class="nameplate btn mag" data-tone="660" style="cursor:default">
-      <span class="glitch" data-text="STEPHEN LIMBEROPOULOS">STEPHEN LIMBEROPOULOS</span>
-      <small class="role glitch" data-text="AUDIO ENGINEER">AUDIO ENGINEER</small>
-    </div>
-  </footer>
-</main>
-
-<!-- Hover sounds via WebAudio (no external files) -->
-<script>
-const ctx = new (window.AudioContext||window.webkitAudioContext)();
-let unlocked=false; const unlock=()=>{ctx.resume();unlocked=true;window.removeEventListener('pointerdown',unlock)}; window.addEventListener('pointerdown',unlock);
-
-function blip(freq=440, ms=170){
-  if(!unlocked) return;
-  const o=ctx.createOscillator(), g=ctx.createGain();
-  o.type='square'; o.frequency.setValueAtTime(freq, ctx.currentTime);
-  // tiny "glitch" sweeps
-  o.frequency.linearRampToValueAtTime(freq*1.08, ctx.currentTime+ms/3000);
-  o.frequency.linearRampToValueAtTime(freq*0.92, ctx.currentTime+ms/1500);
-  g.gain.setValueAtTime(0.001, ctx.currentTime);
-  g.gain.exponentialRampToValueAtTime(0.6, ctx.currentTime+0.01);
-  g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime+ms/1000);
-  o.connect(g); g.connect(ctx.destination);
-  o.start(); o.stop(ctx.currentTime+ms/1000);
-}
-
-document.querySelectorAll('.btn').forEach(el=>{
-  el.addEventListener('mouseenter',()=>blip(parseFloat(el.dataset.tone||480),170));
-});
-</script>
-</body>
-</html>
+.nameplate{display:flex;flex-direction:column;gap:.35rem;padding:1rem 1.25rem;border-radius:16px;border:2px solid
